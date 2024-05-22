@@ -8,7 +8,7 @@ const Demo = () => {
     summary: "",
   });
   const [allArticles, setAllArticles] = useState([]);
-  const [copied,setCopied] = useState();
+  const [copied, setCopied] = useState();
 
   const [getSummary, { error, isFetching }] = useLazyGetSummaryQuery()
 
@@ -103,7 +103,10 @@ const Demo = () => {
       {/* Display Result */}
       <div className='my-10 max-w-full flex justify-center items-center'>
         {isFetching ? (
-          <img src={loader} alt='loader' className='w-20 h-20 object-contain' />
+          <div className='flex flex-col items-center'>
+            <img src={loader} alt='loader' className='w-20 h-20 object-contain' />
+            <p>It may take a while</p>
+          </div>
         ) : error ? (
           <p className='font-inter font-bold text-black text-center'>
             Well, that wasn't supposed to happen...
